@@ -1,0 +1,188 @@
+<br><br><br><br><br><br>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+<style>
+    body {
+        margin: 0;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #4CAF50;
+    }
+</style>
+
+<div id="frame">
+</div>
+<div id= "body">
+
+</div>
+<div id="detailbox" style="display: ;">
+<ul>
+<li><input id="date" onchange="getDate()" type="date"><br>
+</li>
+<li><input id="chandpdflink" placeholder = "Chandigarh PDF Link"><br>
+</li>
+<li><input id="delhipdflink" placeholder = "Delhi PDF Link"><br>
+</li>
+<li><input id="chandimagelink" placeholder = "Chandigarh Image Link"><br>
+</li>
+<li><input id="delhiimagelink" placeholder = "Delhi Image Link">
+
+</ul>
+</div>
+
+
+        <form action="https://v2.convertapi.com/convert/pdf/to/png?Secret=W1P0ayW1zD82wmMT&download=attachment" method="post" enctype="multipart/form-data">
+            <input type="file" name="File" />
+            <input type="hidden" name="ScaleProportions" value="false" />
+            <input type="hidden" name="PreserveResolution" value="true" />
+            <input type="hidden" name="ImageHeight" value="506" />
+            <input type="hidden" name="ImageWidth" value="322" />
+            <input type="submit" value="Convert file"/>
+        </form>
+
+                <form action="https://v2.convertapi.com/convert/pdf/to/png?Secret=W1P0ayW1zD82wmMT&download=attachment" method="post"
+                    enctype="multipart/form-data">
+                    <input type="file" name="File" />
+                    <input type="hidden" name="ScaleProportions" value="false" />
+                    <input type="hidden" name="PreserveResolution" value="true" />
+                    <input type="hidden" name="ImageHeight" value="506" />
+                    <input type="hidden" name="ImageWidth" value="322" />
+                    <input type="submit" value="Convert file" />
+                </form>
+
+<script>
+
+alert("Allow All Poupups and Redirects whenever prompted for this app to work properly");
+
+var PDFTOIMAGELINK = "";
+var WPUPLAODLINK = "https://www.thefinancialworld.com/wp-admin/upload.php";
+var NEWPOST = "https://www.thefinancialworld.com/wp-admin/post-new.php?post_type=page";
+var CHNDPAGELINK = "https://www.thefinancialworld.com/wp-admin/post.php?post=39079&action=edit";
+var DELHIPAGELINK = "https://www.thefinancialworld.com/wp-admin/post.php?post=38979&action=edit";
+function openframe(url,task){
+document.getElementById("frame").innerHTML = "<h3>"+task+"</h3><iframe style='width:100%;height:30%;' src='"+url+"' ></iframe>";
+}
+
+
+function closeframe(url){
+    if(confirm("Please press \"OK\"  only if the task is completed")){
+        document.getElementById("frame").innerHTML = "";
+    }
+}
+
+function openWindow(url,task){
+    alert(task);
+    window.open(url,"_blank");
+    
+}
+
+//;
+//
+function showDetailBox(){
+    document.getElementById("detailbox").style.display = "";
+}
+function HideDetailBox(){
+    document.getElementById("detailbox").style.display = "none";
+}
+
+function getDate(){
+    var d = new Date(document.getElementById('date').value);
+    return (d.getDate() <10 ? "0"+d.getDate():d.getDate())+"-"+monthNow(d.getMonth())+"-"+d.getFullYear();
+}
+
+function showDate(){
+    var d = new Date(document.getElementById('date').value);
+    return (d.getDate() <10 ? "0"+d.getDate():d.getDate())+" "+monthNow(d.getMonth())+", "+d.getFullYear();
+
+}
+
+function monthNow(i){
+    var month = ["January","February","March","April","May","June","July","August","September","October","November","December"] 
+    return month[i];
+}
+
+function writeToBox(task){
+    document.getElementById("body").innerHTML = task;
+}
+
+
+function stepUploadImage(){
+    writeToBox("Set Image Resolution to <b>322 x 506</b>");
+    openWindow(WPUPLAODLINK,"Upload all the images and pdf to the server and copy the link one by one to this page...");
+    showDetailBox();
+}
+function createPost(){
+    var chndlink = document.getElementById("chandpdflink").value;
+    var delhilink = document.getElementById("delhipdflink").value;
+    writeToBox("<h3>Chandigarh Edition-"+getDate()+"</h3><h4>[pdf-embedder url='"+chndlink+"']</h4><h3>Delhi Edition-"+getDate()+"</h3><h4>[pdf-embedder url='"+delhilink+"']</h4>");
+    openWindow(NEWPOST,"Paste The Heading in heading and the post body in body ");
+    openWindow(NEWPOST,"null");
+}
+
+function chandigarhPageAdd(){
+    var task = '<div class="first"><div class="snap-epaper"><a href="/chandigarh-edition-'+getDate().toLowerCase()+'/"><img class="attachment-medium size-medium wp-post-image" src="'+document.getElementById('chandimagelink').value+'" width="300" height="500" /></a></div><h6><a href="/chandigarh-edition-'+getDate().toLowerCase()+'/">Chandigarh Edition - '+showDate()+'</a></h6></div>';
+    writeToBox(task.replace(/>/g,'&gt;').replace(/</g,'&lt;'));
+    openWindow(CHNDPAGELINK,"Please Upload The Text On Top Of All The Text In The Page");
+}
+
+function delhiPageAdd(){
+    var task = '<div class="first"><div class="snap-epaper"><a href="/delhi-edition-'+getDate().toLowerCase()+'/"><img class="attachment-medium size-medium wp-post-image" src="'+document.getElementById('delhiimagelink').value+'" width="300" height="500" /></a></div><h6><a href="/delhi-edition-'+getDate().toLowerCase()+'/">Delhi Edition - '+showDate()+'</a></h6></div>';
+    writeToBox(task.replace(/>/g,'&gt;').replace(/</g,'&lt;'));
+    openWindow(DELHIPAGELINK,"Please Upload The Text On Top Of All The Text In The Page");
+}
+
+var STEPS = 0;
+
+
+function nextStep(){
+switch(STEPS){
+    case 0:
+        openframe(PDFTOIMAGELINK,"Convert PDF to images and download the zip files");
+        break;
+    case 1:
+        closeframe();
+        showDetailBox();
+        stepUploadImage();
+        break;
+    case 2:
+        createPost();
+        break;
+    case 3:
+        chandigarhPageAdd()
+        break;
+    case 4:
+        delhiPageAdd();
+        break;
+}
+STEPS++;
+}
+
+</script>
+<button onclick="nextStep()" >NEXT</button>

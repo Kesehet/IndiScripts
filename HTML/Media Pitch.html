@@ -1,0 +1,47 @@
+<html lang="en">
+<title>Media Pitch</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<header  class="w3-display-container w3-content w3-center" style="max-width:100%">
+  <div id="mainDiv" >
+    <img class="w3-image" id="mainImage"  src="https://wallpaperaccess.com/full/2115.jpg" alt="Me" width="100%" height="600">
+  </div>
+    <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
+    <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge"><b>MEDIA PITCH</b></h1>
+    <h5 class="w3-hide-large" style="white-space:nowrap"><b>MEDIA PITCH</b></h5>
+    <h3 class="w3-hide-medium w3-hide-small">FEARLESS</h3>
+  </div>
+  
+  <!-- Navbar (placed at the bottom of the header image) -->
+  <div class="w3-bar w3-light-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px">
+    <a href="#" class="w3-bar-item w3-button">Home</a>
+    <a href="#portfolio" class="w3-bar-item w3-button">Portfolio</a>
+    <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+  </div>
+</header>
+
+<script>
+    function mainDivScrolled(){
+        var x = document.body.scrollTop / (document.getElementById('mainImage').height/4)  ;
+        if (x < 1 && x > 0 ){
+            document.getElementById('mainImage').style.filter = "grayscale("+x+")";
+            document.getElementById('mainDiv').style.filter = "blur("+(x*7)+"px)";   
+        }
+        console.log(x);
+
+    }
+
+  setInterval(() => {
+    mainDivScrolled();
+  }, 1);
+</script>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+

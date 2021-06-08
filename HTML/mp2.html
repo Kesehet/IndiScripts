@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Media Pitch</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <link type="text/css" rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <div id = "bg">
+        <div id="body" >
+                <!-- Sidebar/menu -->
+                <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px;border-bottom-right-radius:50%;overflow: hidden;" id="mySidebar">
+                    <div class="w3-container w3-display-container w3-padding-16">
+                        <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+                        <h3 class="w3-wide"><b>MEDIA PITCH</b></h3>
+                    </div>
+                    <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+                        <a href="#home" class="w3-bar-item w3-button">Home</a>
+                        <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+                            Services <i class="fa fa-caret-down"></i>
+                        </a>
+                        <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+                            <a href="#" class="w3-bar-item w3-button w3-light-grey"><i
+                                    class="fa fa-caret-right w3-margin-right"></i>Editing & Publishing</a>
+                            <a href="#" class="w3-bar-item w3-button">Brand Building</a>
+                            <a href="#" class="w3-bar-item w3-button">Coffee Table Books</a>
+                            <a href="#" class="w3-bar-item w3-button">Image/Photo Editing</a>
+                        </div>
+                        <a href="#" class="w3-bar-item w3-button">Photo Agency</a>
+                        <a href="#" class="w3-bar-item w3-button">About</a>
+                        <a href="#" class="w3-bar-item w3-button">The Team</a>
+                        <a href="#" class="w3-bar-item w3-button">Contact Us</a>
+                    </div>
+                    <a href="#footer" class="w3-bar-item w3-button w3-padding">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding"
+                        onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
+                    <a href="#footer" class="w3-bar-item w3-button w3-padding">Subscribe</a>
+                </nav>
+
+                <!-- Top menu on small screens -->
+                <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+                    <div class="w3-bar-item w3-padding-24 w3-wide">MEDIA PITCH</div>
+                    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-white w3-padding-24 w3-right" onclick="w3_open()"><i
+                            class="fa fa-bars"></i></a>
+                </header>
+
+                <!-- Overlay effect when opening sidebar on small screens -->
+                <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+                    id="myOverlay"></div>
+                <div class="w3-main" style="margin-left:250px">
+                
+                    <!-- Push down content on small screens -->
+                    <div class="w3-hide-large" style="margin-top:83px"></div>
+                    
+                    
+                    <!-- The Gap -->
+                    <div class="w3-container" style="position: relative;height: 100%;margin-bottom: 40%;">
+                    </div>
+                    
+                    <div class="w3-row-padding" id="home">
+                        <div class="w3-half w3-container w3-margin-bottom">
+                            <div class="w3-container " style="background-color: rgba(255,255,255,0.1);">
+                                <h1><b>Media Pitch</b></h1>
+                                <h4>Media Pitch is an organization that offers media-related assistance and services to a wide range of clients that include
+                                newspapers, magazines, publishing houses, corporations, business entities and authors.</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- The Gap -->
+                    <div class="w3-container" style="position: relative;height: 100%;margin-bottom: 40%;">
+                    </div>  
+                    <div class="w3-row-padding">
+                        <div class="w3-half w3-container w3-margin-bottom">
+                            <div class="w3-container " style="background-color: rgba(255,255,255,0.07);">
+                                <h1><b>Media Pitch</b></h1>
+                                <h4>Media Pitch is an organization that offers media-related assistance and services to a wide range of clients
+                                    that include
+                                    newspapers, magazines, publishing houses, corporations, business entities and authors.</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+        </div>
+    </div>
+
+  <script type="module">
+     import * as THREE from 'https://cdn.jsdelivr.net/gh/mrdoob/three.js/build/three.module.js';
+    
+    import Stats from 'https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/jsm/libs/stats.module.js';
+
+    import { OBJLoader } from 'https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/jsm/loaders/OBJLoader.js';
+
+    let camera, scene, renderer,
+      light1, light2, light3, light4,
+      object, stats;
+
+    const clock = new THREE.Clock();
+
+    init();
+    animate();
+
+    function init() {
+
+      camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1000);
+      camera.position.z = 100;
+
+      scene = new THREE.Scene();
+
+      //model
+
+      const loader = new OBJLoader();
+      loader.load('https://kesehet.000webhostapp.com/obje.obj', function (obj) {
+
+        object = obj;
+        object.scale.multiplyScalar(1);
+        object.position.y = - 30;
+        scene.add(object);
+
+      });
+
+      const sphere = new THREE.SphereGeometry(0.5, 16, 8);
+
+      //lights
+
+      light1 = new THREE.PointLight(0xff0040, 2, 50);
+      light1.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xff0040 })));
+      scene.add(light1);
+
+      light2 = new THREE.PointLight(0x0040ff, 2, 50);
+      light2.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0x0040ff })));
+      scene.add(light2);
+
+      light3 = new THREE.PointLight(0x80ff80, 2, 50);
+      light3.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0x80ff80 })));
+      scene.add(light3);
+
+      light4 = new THREE.PointLight(0xffaa00, 2, 50);
+      light4.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xffaa00 })));
+      scene.add(light4);
+
+      //renderer
+
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.getElementById("bg").appendChild(renderer.domElement);
+      renderer.domElement.style.zIndex = -10;
+      renderer.domElement.style.position = "fixed";
+      renderer.domElement.style.top = 0;
+      renderer.domElement.id = "3dcanvas";
+      renderer.domElement.style.filter = "blur(4px)";
+
+      //stats
+
+      //stats = new Stats();
+      //document.body.appendChild(stats.dom);
+
+      window.addEventListener('resize', onWindowResize);
+
+    }
+
+    function onWindowResize() {
+
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+    }
+
+    function animate() {
+
+      requestAnimationFrame(animate);
+
+      render();
+      //stats.update();
+
+    }
+
+    function render() {
+
+      const time = Date.now() * 0.0005;
+      const delta = clock.getDelta();
+     var scrollref = (window.scrollY / document.getElementsByTagName("canvas")[0].height);
+    if (object) object.rotation.y = 0.5 *  scrollref;
+     //if (object) object.rotation.z = scrollref ;
+      light1.position.x = Math.sin(time * 0.7) * 30;
+      light1.position.y = Math.cos(time * 0.5) * 40;
+      light1.position.z = Math.cos(time * 0.3) * 30;
+
+      light2.position.x = Math.cos(time * 0.3) * 30;
+      light2.position.y = Math.sin(time * 0.5) * 40;
+      light2.position.z = Math.sin(time * 0.7) * 30;
+
+      light3.position.x = Math.sin(time * 0.7) * 30;
+      light3.position.y = Math.cos(time * 0.3) * 40;
+      light3.position.z = Math.sin(time * 0.5) * 30;
+
+      light4.position.x = Math.sin(time * 0.3) * 30;
+      light4.position.y = Math.cos(time * 0.7) * 40;
+      light4.position.z = Math.sin(time * 0.5) * 30;
+
+      renderer.render(scene, camera);
+
+    }
+
+  </script>
+
+  <script>
+    // Accordion 
+    function myAccFunc() {
+        var x = document.getElementById("demoAcc");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    // Click on the "Jeans" link on page load to open the accordion for demo purposes
+    document.getElementById("myBtn").click();
+
+
+    // Open and close sidebar
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+    }
+
+     document.getElementById("3dcanvas").style.filter = "blur(7px)";
+    
+</script>
+</body>
+
+</html>

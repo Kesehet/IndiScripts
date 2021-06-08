@@ -1,0 +1,96 @@
+
+
+<div id = "body">
+</div>
+   
+<script>
+  async function gtask() {    
+	var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "https://Azaan-API.hamoodsiddiqui.repl.co", false ); // false for synchronous request
+    xmlHttp.send( null );
+    document.getElementById('body').innerHTML = xmlHttp.responseText.replaceAll("server","<br><br><br>server");
+	console.log(xmlHttp);
+}
+  function mtask() {
+    var result = null
+senderOBJECT = {
+"mname":document.getElementById('mname').value,
+"latitude":document.getElementById('latitude').value,
+"longitude":document.getElementById('longitude').value,
+"fajrTime":document.getElementById('fajrTime').value,
+"zuhrTime":document.getElementById('zuhrTime').value,
+"asrTime":document.getElementById('asrTime').value,
+"maghribTime":document.getElementById('maghribTime').value,
+"ishaTime":document.getElementById('ishaTime').value,
+"sid":document.getElementById('sid').value
+  };
+  console.log(senderOBJECT);
+fetch("https://Azaan-API.hamoodsiddiqui.repl.co/addMasjid/", {
+  method: "POST",
+  mode: 'no-cors',
+  body: JSON.stringify(senderOBJECT),
+  headers: {"content-type": "application/json"},
+})
+.then(function(res) {
+  if (res.ok) { // ok if status is 2xx
+    console.log('OK ' + res.statusText);
+  } else {
+    console.log('Request failed.  Returned status of ' + res.status);
+  }
+});
+gtask();
+}
+
+  function dtask() {
+    var result = null
+senderOBJECT = {
+"mid":document.getElementById('id').value
+  };
+  console.log(senderOBJECT);
+fetch("https://Azaan-API.hamoodsiddiqui.repl.co/deleteMasjid/", {
+  method: "POST",
+  mode: 'no-cors',
+  body: JSON.stringify(senderOBJECT),
+  headers: {"content-type": "application/json"},
+})
+.then(function(res) {
+  if (res.ok) { // ok if status is 2xx
+    console.log('OK ' + res.statusText);
+  } else {
+    console.log('Request failed.  Returned status of ' + res.status);
+  }
+});
+gtask();
+}
+
+
+gtask();
+  </script>
+
+<hr/>
+<h1>Add Masjid</h1>
+<h2>Name Of Masjid</h2>
+        <input id="mname" type="text">
+<h4>Latittude</h4>
+        <input id="latitude" type="text">
+<h4>Longitude </h4>
+        <input id="longitude" type="text">
+<h2>Namaz Details (hh-mm)</h2>
+<h4>Fajr Time</h4>
+        <input id="fajrTime" type="text">
+<h4>Zuhr Time</h4>
+        <input id="zuhrTime" type="text">
+<h4>Asr Time</h4>
+        <input id="asrTime" type="text">
+<h4>Maghrib Time</h4>
+        <input id="maghribTime" type="text">
+<h4>Isha Time</h4>
+        <input id="ishaTime" type="text">
+<h5>ignore </h5>
+        <input id="sid" value = "0" type="number">
+        <input type="submit" onclick="mtask()">
+<hr/>
+
+<h1>Delete ID</h1>
+<input id="id" type="number">
+        <input type="submit" onclick="dtask()">

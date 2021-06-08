@@ -1,0 +1,17 @@
+
+var audio = new Audio('https://web.whatsapp.com/sequential-ptt-middle_7fa161964e93db72b8d00ae22189d75f.mp3');
+
+
+setInterval(function(){ 
+
+try{
+if(document.getElementsByClassName("_3Id9P _1VzZY selectable-text copyable-text")[0].innerText == "online"){
+audio.play();
+}
+else{
+console.log("its a group !");
+}
+}
+catch(error){console.log(error);}
+
+ }, 1000);

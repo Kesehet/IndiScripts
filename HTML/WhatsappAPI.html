@@ -1,0 +1,25 @@
+<button onclick="openWindow()" >Get Next Number </button>
+<script>
+
+const numbers = ["9540867732","9868881055"];
+const message = "Bot Message";
+
+var indexnow = 0;
+
+this.window.focus()
+var newWin = null;
+function openWindow(){
+
+    if(newWin == null)
+    {newWin = window.open("", this);}
+    var urlmaker = "https://web.whatsapp.com/send?phone=91"+numbers[indexnow]+"&text="+message; 
+    newWin.location.replace(urlmaker);
+    newWin.focus()
+    if(indexnow >= numbers.length){
+        indexnow = 0;
+    }
+    indexnow++;
+}
+
+
+</script>

