@@ -8,23 +8,8 @@ import requests
 from requests.structures import CaseInsensitiveDict
 #import pandas as pd
 import random
-import string
 
-
-def pinGen():
-  return ''.join(random.SystemRandom().choice(string.digits) for _ in range(12))
-
-def processValue(p):
-    p = str(p)
-    p = p.replace('/','')
-    p = p.replace('-','')
-    p = p.replace(' ','')
-    p = p.strip()
-    return p
-
-userData = [{"enroll":"test1","pin":pinGen(),"number":"9540867732"},
-            {"enroll":"test2","pin":pinGen(),"number":"8826270631"},
-            {"enroll":"test4","pin":pinGen(),"number":"9999949511"}
+userData = [{"mess":"test1","number":"919540867732"},
             ]
 
 print("Launching Browser...")
@@ -40,9 +25,9 @@ while len(driver.find_elements_by_class_name("_2zr6K")) != 0:
 
 
 
-def sendMessage(enrollno,pin,number,):
-    message = "This is a bot generated message:-  Your Username is :-"+enrollno + " Your Security Verification code is:- " + pin
-    driver.get("https://web.whatsapp.com/send?phone=91"+number+"&text="+message)
+def sendMessage(mess,number,):
+    message = "This is a bot generated message:- " + mess
+    driver.get("https://web.whatsapp.com/send?phone="+number+"&text="+message)
 
     while len(driver.find_elements_by_class_name("_1E0Oz")) != 1:
         print("Waiting For Button")
@@ -56,23 +41,7 @@ def sendMessage(enrollno,pin,number,):
     if(input("Message Succefully Sent ? Y/N") == "Y"):
         print("Sorry For What just happened .... Please Add This Manually :(")
         print (message)
-        addList(enrollno,pin,pinGen())
-        
-
-
-
-
-def addList(user,pin,password):
-    m = processValue(user)
-    url = "https://evpbtts.kesehetzayyan.repl.co/createuser"
-    headers = CaseInsensitiveDict()
-    headers["Content-Type"] = "application/json"
-    data = '{"user":"'+m+'","pin":"'+pin+'","passw":"'+password+'"}'
-    resp = requests.post(url, headers=headers, data=data)
-    print(data)
-    print(resp.text)
-
 
 for user in userData:
-    sendMessage(user['enroll'],user['pin'],user['number'])
+    sendMessage(user['mess'],user['number'])
 driver.quit()

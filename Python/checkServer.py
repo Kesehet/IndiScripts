@@ -3,7 +3,7 @@ import time
 #from playsound import playsound
 
 
-url = 'http://elections-bosco.000webhostapp.com/login.php'
+url = 'https://www.google.com/'
 
 while 1:
     try:
